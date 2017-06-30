@@ -1,0 +1,29 @@
+{
+  "name": "@tsmean/hero",
+  "version": "1.0.0",
+  "description": "Hero Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bersling/hero-module.git"
+  },
+  "keywords": [
+    "Hero",
+    "Starter",
+    "Kit",
+    "tsmean"
+  ],
+  "author": "bersling@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bersling/hero-module/issues"
+  },
+  "homepage": "https://github.com/bersling/hero-module#readme",
+  "dependencies": {
+    "@tsmean/resource": "^1.0.1",
+    "notify-angular": "^1.1.2"
+  }
+}
