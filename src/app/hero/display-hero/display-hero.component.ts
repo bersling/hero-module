@@ -13,7 +13,6 @@ import {HeroStoreService} from '../hero.store';
 })
 export class DisplayHeroComponent implements OnChanges {
 
-
   @Input()
   heroId: string;
 
