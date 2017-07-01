@@ -29,6 +29,10 @@ export class HeroDashboardListStore {
     }
   }
 
+  set(newList: string[]): void {
+    this.dashboardList.next(newList);
+  }
+
   removeById (resourceId: string): void {
     const currentValue = this.dashboardList.getValue();
     this.dashboardList.next(currentValue.filter(id => id !== resourceId));

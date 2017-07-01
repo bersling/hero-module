@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
+import {HeroDashboardListStore} from '../hero-dashboard-list.store';
+import {HeroStoreService} from '../hero.store';
 
 @Component({
   selector: 'hero-wrapper',
@@ -12,18 +14,26 @@ export class HeroWrapperComponent implements OnInit {
   heroes: Hero[] = [];
 
   constructor(
-      private heroService: HeroService
+      private heroService: HeroService,
+      private dashboardList: HeroDashboardListStore,
+      private heroStore: HeroStoreService
   ) {}
 
 
   ngOnInit() {
 
-    // get heroes
+    // get heroes and initialize dashboard list
     this.heroService.getHeros().subscribe(heroes => {
+      // this.dashboardList.set(heroes.map(hero => hero.uid));
       this.heroes = heroes;
     }, errorResp => {
       console.error('something went wrong when getting heroes:', errorResp);
     });
+
+    // set up listener
+    this.dashboardList.get().subscribe(newList => {
+      // this.heroes = newList;
+    })
 
   }
 

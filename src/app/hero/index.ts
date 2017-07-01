@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 
 import {MdInputModule} from '@angular/material';
 import {HeroDashboardListStore} from './hero-dashboard-list.store';
+import {HeroStoreService} from './hero.store';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ export class HeroModule {
       ngModule: HeroModule,
       providers: [
         HeroDashboardListStore,
+        HeroStoreService,
         HeroService
       ]
     }
