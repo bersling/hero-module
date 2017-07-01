@@ -11,7 +11,7 @@ import {HeroStoreService} from '../hero.store';
 })
 export class HeroWrapperComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  heroIds: string[] = [];
 
   constructor(
       private heroService: HeroService,
@@ -24,16 +24,16 @@ export class HeroWrapperComponent implements OnInit {
 
     // get heroes and initialize dashboard list
     this.heroService.getHeros().subscribe(heroes => {
-      // this.dashboardList.set(heroes.map(hero => hero.uid));
-      this.heroes = heroes;
+      this.heroStore.addOrUpdateMany(heroes);
+      this.dashboardList.set(heroes.map(hero => hero.uid));
     }, errorResp => {
       console.error('something went wrong when getting heroes:', errorResp);
     });
 
     // set up listener
     this.dashboardList.get().subscribe(newList => {
-      // this.heroes = newList;
-    })
+      this.heroIds = newList;
+    });
 
   }
 

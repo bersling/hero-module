@@ -4,6 +4,7 @@ import {HeroSettings} from '../hero-settings';
 import {HeroService} from '../hero.service';
 
 import { CoreUtils } from '@tsmean/utils';
+import {HeroStoreService} from '../hero.store';
 
 @Component({
   selector: 'hero-display',
@@ -14,7 +15,9 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
 
 
   @Input()
-  hero: Hero = {};
+  heroId: string;
+
+  hero: Hero;
 
   heroCopy: Hero;
 
@@ -23,15 +26,18 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
   };
 
   constructor(
-      private heroService: HeroService
+      private heroService: HeroService,
+      private heroStore: HeroStoreService
   ) { }
 
   ngOnInit() {
-    this.resetCopy();
+    this.heroStore.get(this.heroId).subscribe(hero => {
+      this.hero = hero;
+    })
   }
 
   ngOnChanges(changes: SimpleChanges) {
-      this.resetCopy();
+    this.resetCopy();
   }
 
 
@@ -41,13 +47,13 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
 
   updateHero() {
     this.heroService.updateHero(this.heroCopy).subscribe(hero => {
-      this.hero = hero;
+      this.heroStore.addOrUpdate(hero);
       this.toggleEditable();
     });
   }
 
   resetCopy() {
-    this.heroCopy = CoreUtils.deepCopy(this.hero);
+    this.heroCopy = CoreUtils.deepCopy(this.heroId);
   }
 
 }

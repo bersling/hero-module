@@ -9,7 +9,7 @@ import {Hero} from '../hero';
 export class DisplayHeroListComponent implements OnInit {
 
   @Input()
-  heroes: Hero[];
+  heroIds: string[];
 
   constructor() { }
 

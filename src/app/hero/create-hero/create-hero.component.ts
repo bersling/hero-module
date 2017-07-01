@@ -3,6 +3,7 @@ import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 import {NotifyService} from 'notify-angular';
 import {HeroDashboardListStore} from '../hero-dashboard-list.store';
+import {HeroStoreService} from '../hero.store';
 
 @Component({
   selector: 'hero-create',
@@ -16,7 +17,8 @@ export class CreateHeroComponent implements OnInit {
   constructor(
       private heroService: HeroService,
       private notifyService: NotifyService,
-      private dashboardList: HeroDashboardListStore
+      private dashboardList: HeroDashboardListStore,
+      private heroStore: HeroStoreService
   ) { }
 
   ngOnInit() {
@@ -25,9 +27,10 @@ export class CreateHeroComponent implements OnInit {
 
   public createHero() {
     const heroObs = this.heroService.createHero(this.newHero);
-    heroObs.subscribe(resp => {
+    heroObs.subscribe(newHero => {
+      this.heroStore.addOrUpdate(newHero);
       this.notifyService.success('Hero Created');
-      this.dashboardList.add(resp.uid);
+      this.dashboardList.add(newHero.uid);
     }, errorResp => {
       this.notifyService.error(errorResp.statusText);
     });

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 import {HeroDashboardListStore} from '../hero-dashboard-list.store';
+import {HeroStoreService} from '../hero.store';
 
 @Component({
   selector: 'hero-delete',
@@ -15,7 +16,8 @@ export class DeleteHeroComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private dashboardList: HeroDashboardListStore
+    private dashboardList: HeroDashboardListStore,
+    private heroStore: HeroStoreService
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,7 @@ export class DeleteHeroComponent implements OnInit {
 
   public deleteHero() {
     this.heroService.deleteHero(this.hero.uid).subscribe(() => {
+      this.heroStore.remove(this.hero.uid);
       this.dashboardList.removeById(this.hero.uid);
     });
   }
