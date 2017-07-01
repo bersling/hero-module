@@ -10,12 +10,13 @@ export class HeroDashboardListStore {
 
   constructor() { }
 
+
   /**
    * Adds a resourceId to the list. If no position is provided, appends it to the end.
    */
   add (resourceId: string, index?: number): void {
     const currentValue = this.dashboardList.getValue(); // todo: check immutability
-    if (index) {
+    if (index !== undefined) {
       if (index <= currentValue.length) {
         currentValue.splice(index, 0, resourceId);
         this.dashboardList.next(currentValue);
@@ -28,16 +29,23 @@ export class HeroDashboardListStore {
     }
   }
 
-  remove (resourceId: string): void {
+  removeById (resourceId: string): void {
     const currentValue = this.dashboardList.getValue();
     this.dashboardList.next(currentValue.filter(id => id !== resourceId));
   }
+
+  removeByIndex (index: number): void {
+    const currentValue = this.dashboardList.getValue();
+    currentValue.splice(index, 1);
+    this.dashboardList.next(currentValue);
+  }
+
 
   get(): Observable<string[]> {
     return this.dashboardList;
   }
 
-  update (index: number, newResourceId: string): void {
+  updateByIndex (index: number, newResourceId: string): void {
     const currentValue = this.dashboardList.getValue();
     if (index <= currentValue.length) {
       currentValue[index] = newResourceId;
@@ -46,5 +54,12 @@ export class HeroDashboardListStore {
       throw new Error('Index of bounds. Cannot update hero.');
     }
   }
+
+  updateById (id: string, newResourceId: string): void {
+    const currentValue = this.dashboardList.getValue();
+    const newValue = currentValue.map(x => x === id ? newResourceId : x);
+    this.dashboardList.next(newValue);
+  }
+
 
 }
