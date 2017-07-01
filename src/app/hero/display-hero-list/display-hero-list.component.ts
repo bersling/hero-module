@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 
 @Component({
-  selector: 'app-display-hero-list',
+  selector: 'hero-dashboard-list',
   templateUrl: './display-hero-list.component.html',
   styleUrls: ['./display-hero-list.component.css']
 })

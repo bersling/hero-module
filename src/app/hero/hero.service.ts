@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ResourceName, ResourceService} from '../services/resource.service';
 import {Observable} from 'rxjs/Observable';
 import { Hero } from './hero';
+
+import { ResourceService } from '@tsmean/resource';
 
 @Injectable()
 export class HeroService {
@@ -10,29 +11,24 @@ export class HeroService {
       private resourceService: ResourceService
   ) { }
 
-  private get resourceName (): ResourceName {
+  private get resourceName (): string {
     return 'heroes';
   }
 
-  getHeros(): Promise<Hero[]> {
+  getHeros(): Observable<Hero[]> {
     return this.resourceService.getResources(this.resourceName);
   }
 
-  createHero(hero: Hero): Promise<Hero> {
+  createHero(hero: Hero): Observable<Hero> {
     return this.resourceService.createResource(hero, this.resourceName);
   }
 
-  deleteHero(heroId: string): Promise<Object> {
+  deleteHero(heroId: string): Observable<Hero> {
     return this.resourceService.deleteResource(heroId, this.resourceName);
   }
 
-  updateHero(hero: Hero): Promise<Hero> {
+  updateHero(hero: Hero): Observable<Hero> {
     return this.resourceService.updateResource(hero, this.resourceName);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
   }
 
 }

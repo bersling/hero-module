@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/bersling/hero-module#readme",
   "dependencies": {
-    "@tsmean/resource": "^1.0.1",
-    "notify-angular": "^1.1.2"
+    "@tsmean/resource": "^1.1.2",
+    "@tsmean/utils": "^1.0.0",
+    "notify-angular": "^2.0.1"
   }
 }

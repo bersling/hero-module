@@ -5,16 +5,26 @@ import {DeleteHeroComponent} from './delete-hero/delete-hero.component';
 import {DisplayHeroComponent} from './display-hero/display-hero.component';
 import {DisplayHeroListComponent} from './display-hero-list/display-hero-list.component';
 import {HeroService} from './hero.service';
+import {HeroWrapperComponent} from './hero-wrapper/hero-wrapper.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule
+  ],
+  declarations: [
     CreateHeroComponent,
     DeleteHeroComponent,
     DisplayHeroComponent,
-    DisplayHeroListComponent
+    DisplayHeroListComponent,
+    HeroWrapperComponent
   ],
-  declarations: []
+  exports: [
+    CreateHeroComponent,
+    DeleteHeroComponent,
+    DisplayHeroListComponent,
+    DisplayHeroComponent,
+    HeroWrapperComponent
+  ]
 })
 export class HeroModule {
 

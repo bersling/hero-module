@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
-import {BroadcastService} from '../../services/broadcast.service';
+import {HeroDashboardListStore} from '../hero-dashboard-list.store';
 
 @Component({
-  selector: 'app-delete-hero',
+  selector: 'hero-delete',
   templateUrl: './delete-hero.component.html',
   styleUrls: ['./delete-hero.component.css']
 })
@@ -15,19 +15,16 @@ export class DeleteHeroComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private broadcast: BroadcastService
+    private dashboardList: HeroDashboardListStore
   ) { }
 
   ngOnInit() {
   }
 
   public deleteHero() {
-    this.heroService.deleteHero(this.hero.uid).then(resp => {
-      this.broadcast.heroList.deleteHero.emit({
-        heroId: this.hero.uid
-      });
+    this.heroService.deleteHero(this.hero.uid).subscribe(() => {
+      this.dashboardList.remove(this.hero.uid);
     });
   }
-
 
 }

@@ -2,9 +2,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
 import {NotifyService} from 'notify-angular';
+import {HeroDashboardListStore} from '../hero-dashboard-list.store';
 
 @Component({
-  selector: 'app-create-hero',
+  selector: 'hero-create',
   templateUrl: './create-hero.component.html',
   styleUrls: ['./create-hero.component.css']
 })
@@ -12,12 +13,10 @@ export class CreateHeroComponent implements OnInit {
 
   public newHero: Hero;
 
-  @Output()
-  newHeroCreated = new EventEmitter();
-
   constructor(
       private heroService: HeroService,
-      private notifyService: NotifyService
+      private notifyService: NotifyService,
+      private dashboardList: HeroDashboardListStore
   ) { }
 
   ngOnInit() {
@@ -25,18 +24,13 @@ export class CreateHeroComponent implements OnInit {
   }
 
   public createHero() {
-
     const heroObs = this.heroService.createHero(this.newHero);
-    heroObs.then(resp => {
+    heroObs.subscribe(resp => {
       this.notifyService.success('Hero Created');
-      this.newHeroCreated.emit({
-        value: resp
-      });
+      this.dashboardList.add(resp.uid);
     }, errorResp => {
       this.notifyService.error(errorResp.statusText);
     });
-
   }
-
 
 }
