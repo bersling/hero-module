@@ -15,8 +15,8 @@ export class HeroStoreService {
     return 'heroes';
   }
 
-  add (resourceId: string, hero: Hero): void {
-    this.resourceStore.add(this.resourceName, resourceId, hero);
+  addOrUpdate (resourceId: string, hero: Hero): void {
+    this.resourceStore.addOrUpdate(this.resourceName, hero);
   }
 
   remove (resourceId: string): void {
@@ -25,10 +25,6 @@ export class HeroStoreService {
 
   get (resourceId: string): Hero {
     return this.resourceStore.get(this.resourceName, resourceId);
-  }
-
-  update (resourceId: string, resource: Hero): void {
-    this.resourceStore.update(this.resourceName, resourceId, resource);
   }
 
 }

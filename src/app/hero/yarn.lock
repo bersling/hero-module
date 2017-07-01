@@ -2,12 +2,6 @@
 # yarn lockfile v1
 
 
-"@tsmean/resource@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@tsmean/resource/-/resource-1.1.7.tgz#6612ee25127d48eb824f01898c0669cad14b7f1a"
-  dependencies:
-    "@tsmean/utils" "^1.1.0"
-
-"@tsmean/utils@^1.0.0", "@tsmean/utils@^1.1.0":
+"@tsmean/utils@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@tsmean/utils/-/utils-1.1.0.tgz#3596a84c7576b5539c12b50acd92cc72ee94a17c"
