@@ -11,7 +11,7 @@ import {HeroStoreService} from '../hero.store';
   templateUrl: './display-hero.component.html',
   styleUrls: ['./display-hero.component.css']
 })
-export class DisplayHeroComponent implements OnChanges, OnInit {
+export class DisplayHeroComponent implements OnChanges {
 
 
   @Input()
@@ -30,14 +30,13 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
       private heroStore: HeroStoreService
   ) { }
 
-  ngOnInit() {
-    this.heroStore.get(this.heroId).subscribe(hero => {
-      this.hero = hero;
-    })
-  }
-
   ngOnChanges(changes: SimpleChanges) {
-    this.resetCopy();
+    if (changes['heroId']) {
+      this.heroStore.get(this.heroId).subscribe(hero => {
+        this.hero = hero;
+        this.resetCopy();
+      })
+    }
   }
 
 
@@ -53,7 +52,9 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
   }
 
   resetCopy() {
-    this.heroCopy = CoreUtils.deepCopy(this.heroId);
+    if (this.hero) {
+      this.heroCopy = CoreUtils.deepCopy(this.hero);
+    }
   }
 
 }
