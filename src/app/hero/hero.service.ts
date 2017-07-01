@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { Hero } from './hero';
 
-import { ResourceService } from '@tsmean/resource';
+import { ResourceService } from '@tsmean/resource/resource.service';
 
 @Injectable()
 export class HeroService {

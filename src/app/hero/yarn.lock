@@ -2,13 +2,9 @@
 # yarn lockfile v1
 
 
-"@tsmean/resource@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@tsmean/resource/-/resource-1.1.2.tgz#1be0e32686451ef9ad0b6d9df4723465f5d92a64"
-
 "@tsmean/utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tsmean/utils/-/utils-1.0.0.tgz#45f4fa40f66cc6448e27ec95cebaf0a3ed5f4f20"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@tsmean/utils/-/utils-1.1.0.tgz#3596a84c7576b5539c12b50acd92cc72ee94a17c"
 
 notify-angular@^2.0.1:
   version "2.0.1"

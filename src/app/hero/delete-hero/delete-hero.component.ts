@@ -23,7 +23,7 @@ export class DeleteHeroComponent implements OnInit {
 
   public deleteHero() {
     this.heroService.deleteHero(this.hero.uid).subscribe(() => {
-      this.dashboardList.remove(this.hero.uid);
+      this.dashboardList.removeById(this.hero.uid);
     });
   }
 
