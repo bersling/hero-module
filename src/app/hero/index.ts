@@ -8,7 +8,10 @@ import {HeroService} from './hero.service';
 import {HeroWrapperComponent} from './hero-wrapper/hero-wrapper.component';
 import {FormsModule} from '@angular/forms';
 
-import {MdInputModule} from '@angular/material';
+import {
+  MdInputModule, MdButtonModule, MdCardModule, MdToolbarModule, MdMenuModule,
+  MdIconModule
+} from '@angular/material';
 import {HeroDashboardListStore} from './hero-dashboard-list.store';
 import {HeroStoreService} from './hero.store';
 
@@ -16,7 +19,12 @@ import {HeroStoreService} from './hero.store';
   imports: [
     CommonModule,
     FormsModule,
-    MdInputModule
+    MdInputModule,
+    MdButtonModule,
+    MdCardModule,
+    MdToolbarModule,
+    MdMenuModule,
+    MdIconModule
   ],
   declarations: [
     CreateHeroComponent,
@@ -43,7 +51,7 @@ export class HeroModule {
         HeroStoreService,
         HeroService
       ]
-    }
+    };
   }
 
 }

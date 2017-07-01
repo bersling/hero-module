@@ -8,7 +8,7 @@ import { createResourceModule } from '@tsmean/resource';
 
 import {NotifyModule} from 'notify-angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {MdButtonModule} from '@angular/material';
 const resourceModule = createResourceModule('http://demo.tsmean.com:4242/api/v1');
 
 @NgModule({
@@ -20,7 +20,8 @@ const resourceModule = createResourceModule('http://demo.tsmean.com:4242/api/v1'
     BrowserAnimationsModule,
     resourceModule,
     NotifyModule.forRoot(),
-    HeroModule.forRoot()
+    HeroModule.forRoot(),
+    MdButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
