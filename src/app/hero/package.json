@@ -34,6 +34,6 @@
     "notify-angular": "^2.0.1",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.12",
-    "@tsmean/resource": "^1.0.0"
+    "@tsmean/resource": "^2.0.0"
   }
 }
