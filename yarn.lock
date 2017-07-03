@@ -157,9 +157,9 @@
     magic-string "^0.19.0"
     source-map "^0.5.6"
 
-"@tsmean/resource@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@tsmean/resource/-/resource-1.1.10.tgz#ebad291f0d1678d3d4d36fac648d04e9c7e53eb8"
+"@tsmean/resource@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@tsmean/resource/-/resource-1.1.12.tgz#909fa6c4ef45326a80b45bf63b4936db4958c28f"
   dependencies:
     "@tsmean/utils" "^1.1.0"
 
