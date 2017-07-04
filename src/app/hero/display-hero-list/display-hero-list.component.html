@@ -1,5 +1,3 @@
-<ul class="no-bullets">
-  <li *ngFor="let heroId of heroIds;">
-    <hero-display [heroId]="heroId"></hero-display>
-  </li>
-</ul>
+<div *ngFor="let heroId of heroIds.slice().reverse();" class="hero-list-element">
+  <hero-display [heroId]="heroId"></hero-display>
+</div>

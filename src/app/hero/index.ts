@@ -31,7 +31,8 @@ import {HeroStoreService} from './hero.store';
     DeleteHeroComponent,
     DisplayHeroComponent,
     DisplayHeroListComponent,
-    HeroWrapperComponent
+    HeroWrapperComponent,
+
   ],
   exports: [
     CreateHeroComponent,
