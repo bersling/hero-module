@@ -1,19 +1,32 @@
 <div class="display-hero">
 
-  <!-- Display or Edit Hero -->
-  <div *ngIf="!heroSettings.isBeingEdited">
-    {{hero.name}}
-  </div>
-  <md-input-container *ngIf="heroSettings.isBeingEdited">
-    <input mdInput [(ngModel)]="heroCopy.name"/>
-  </md-input-container>
-  <div class="hero-id">{{hero.uid}}</div>
-  <div>
-    <button color="accent" md-button *ngIf="heroSettings.isBeingEdited" (click)="updateHero()">Update Hero</button>
-    <button md-button (click)="toggleEditable()">
-      <span *ngIf="!heroSettings.isBeingEdited">Edit Hero</span>
-      <span *ngIf="heroSettings.isBeingEdited" (click)="resetCopy()">Cancel Edit</span>
-    </button>
-  </div>
-  <hero-delete [hero]="hero"></hero-delete>
 </div>
+
+<md-card>
+
+  <div style="display: flex; align-items: center">
+  
+    <!-- Display or Edit Hero -->
+    <div style="padding: 5px; flex: 1">
+      <div *ngIf="!heroSettings.isBeingEdited">
+        {{hero.name}}
+      </div>
+      <md-input-container *ngIf="heroSettings.isBeingEdited">
+        <input mdInput placeholder="Hero's Name" [(ngModel)]="heroCopy.name"/>
+      </md-input-container>
+      <button color="accent" md-raised-button *ngIf="heroSettings.isBeingEdited" (click)="updateHero()">Update Hero</button>
+    </div>
+  
+    <div>
+      <button md-button color="primary" (click)="resetCopy(); toggleEditable();">
+        <md-icon *ngIf="!heroSettings.isBeingEdited">edit</md-icon>
+        <md-icon *ngIf="heroSettings.isBeingEdited">cancel</md-icon>
+      </button>
+    </div>
+    
+    <hero-delete [hero]="hero"></hero-delete>
+    
+  </div>
+  
+  
+</md-card>

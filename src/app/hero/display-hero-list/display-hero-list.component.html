@@ -1,3 +1,5 @@
-<div *ngFor="let heroId of heroIds.slice().reverse();" class="hero-list-element">
-  <hero-display [heroId]="heroId"></hero-display>
-</div>
+<md-card>
+  <div *ngFor="let heroId of heroIds.slice().reverse();" class="hero-list-element">
+    <hero-display [heroId]="heroId"></hero-display>
+  </div>
+</md-card>
