@@ -1,6 +1,6 @@
 {
   "name": "@tsmean/hero",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Hero Module",
   "main": "index.js",
   "scripts": {
